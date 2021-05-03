@@ -21,6 +21,8 @@ void setup() {
    }
    // LED funtimes
    pinMode(LED_BUILTIN, OUTPUT);
+   pinMode(12,OUTPUT); // L side motor
+   pinMode(13,OUTPUT); // R side motor
 }
 
 int tiltAngleHelper(int rawValue) {
@@ -42,7 +44,9 @@ int tiltAngleHelper(int rawValue) {
 }
 
 void setMotorPowers(int leftMotorPower, int rightMotorPower) {
-  // TODO real hardware pins
+  // real hardware pins
+  analogWrite(12,1023-leftMotorPower);
+  analogWrite(13,1023-rightMotorPower);
 
   // And now to draw a fun graph
   const int BAR_WIDTH = 30;
